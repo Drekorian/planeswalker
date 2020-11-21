@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="cz.drekorian.android.planeswalker.card.CardViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/part_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:isVisible="@{viewModel.card != null}">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/vertical_margin"
+                        android:clickable="false"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintDimensionRatio="0.71f"
+                        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                        app:layout_constraintStart_toStartOf="@id/guideline_start"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/card_back" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/properties_container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/vertical_margin"
+                        app:cardCornerRadius="@dimen/card_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:layout_constraintBottom_toTopOf="@id/rulings_container"
+                        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                        app:layout_constraintStart_toStartOf="@id/guideline_start"
+                        app:layout_constraintTop_toBottomOf="@id/image">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="@dimen/horizontal_margin"
+                            android:paddingVertical="@dimen/vertical_margin_small">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/type_line"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewModel.card.typeLine}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                tools:text="Creature — Human Cleric" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/oracle_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/vertical_margin_smaller"
+                                android:isVisible="@{!viewModel.card.oracleText.empty}"
+                                android:text="@{viewModel.card.oracleText}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                tools:text="At the beginning of combat on your turn, put a +1/+1 counter on target creature you control." />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/flavor_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/vertical_margin_tiny"
+                                android:isVisible="@{viewModel.card.flavorText != null}"
+                                android:text="@{viewModel.card.flavorText}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textStyle="italic"
+                                tools:text="Rally to my light, and together we will drive out this darkness!" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/power_toughness"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/vertical_margin_smaller"
+                                android:isVisible="@{viewModel.card.power != null &amp;&amp; viewModel.card.toughness != null}"
+                                android:text="@{@string/fragment_card_power_toughness(viewModel.card.power, viewModel.card.toughness)}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                tools:text="1/1" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/artist"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/vertical_margin_smaller"
+                                android:isVisible="@{!viewModel.card.artist.empty}"
+                                android:text="@{@string/fragment_card_illustrated_by(viewModel.card.artist)}"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                tools:text="Illustrated by John Avon" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/rulings_container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/vertical_margin_small"
+                        android:isVisible="@{viewModel.rulings == null || !viewModel.rulings.empty}"
+                        app:cardCornerRadius="@dimen/card_radius"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:layout_constraintBottom_toTopOf="@id/space_bottom"
+                        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                        app:layout_constraintStart_toStartOf="@id/guideline_start"
+                        app:layout_constraintTop_toBottomOf="@id/properties_container">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="@dimen/horizontal_margin"
+                            android:paddingVertical="@dimen/vertical_margin_small"
+                            app:rulings="@{viewModel.rulings}">
+
+                            <ProgressBar
+                                android:id="@+id/rulings_loading"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:isVisible="@{viewModel.rulings == null}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:isVisible="@{viewModel.rulings != null}"
+                                android:text="@{@string/fragment_card_rulings(viewModel.card.name)}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textStyle="bold"
+                                tools:text="Notes and rules information about Path to Exile" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <Space
+                        android:id="@+id/space_bottom"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/vertical_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rulings_container" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="@dimen/horizontal_margin" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="@dimen/horizontal_margin" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_circular"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:isVisible="@{viewModel.card == null}"
+                    tools:visibility="gone" />
+
+            </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

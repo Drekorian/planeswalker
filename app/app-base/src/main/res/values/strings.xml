@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name"><![CDATA[Planeswalker\'s Assistant]]></string>
+
+    <!-- Main Fragment -->
+    <string name="fragment_main_action_life_counter">Life Counter</string>
+    <string name="fragment_main_action_settings">Settings</string>
+    <string name="fragment_main_action_scryfall">Scryfall</string>
+    <string name="fragment_main_random_card_title">Random Card</string>
+
+    <!-- Life Counter Fragment -->
+    <string name="fragment_life_counter_title">Life Counter</string>
+    <string name="fragment_life_counter_new_game">New game</string>
+
+    <!-- Settings Fragment -->
+    <string name="fragment_settings_title">Settings</string>
+    <string name="fragment_settings_dark_mode">Enforce Dark Mode</string>
+    <string name="fragment_settings_life">Life Counter</string>
+
+    <!-- Settings/Life Fragment -->
+    <string name="fragment_settings_life_title">Life Counter</string>
+    <string name="fragment_settings_life_description">Select default life for Life Counter</string>
+    <string name="fragment_settings_life_life_value_standard">Standard (20)</string>
+    <string name="fragment_settings_life_life_value_brawl">Brawl (25)</string>
+    <string name="fragment_settings_life_life_value_commander">Commander (40)</string>
+
+    <!-- Scryfall Set List Fragment -->
+    <string name="fragment_set_list_title">Sets</string>
+
+    <!-- Scryfall Set Fragment -->
+    <string name="fragment_set_title">Set</string>
+
+    <!-- Scryfall Card Fragment -->
+    <string name="fragment_card_title">Card</string>
+    <string name="fragment_card_power_toughness">%1$s/%2$s</string>
+    <string name="fragment_card_illustrated_by">Illustrated by %s</string>
+    <string name="fragment_card_rulings">Notes and Rules Information for %s:</string>
+    <string name="fragment_card_menu_scryfall">View on Scryfall</string>
+
+</resources>

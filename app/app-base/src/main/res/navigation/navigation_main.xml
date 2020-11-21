@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="cz.drekorian.android.planeswalker.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/open_scryfall"
+            app:destination="@id/scryfallActivity" />
+
+        <action
+            android:id="@+id/open_settings"
+            app:destination="@id/settingsActivity" />
+
+        <action
+            android:id="@+id/open_life_counter"
+            app:destination="@id/lifeCounterActivity" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/scryfallActivity"
+        android:name="cz.drekorian.android.planeswalker.scryfall.ScryfallActivity"
+        android:label="ScryfallActivity"
+        tools:layout="@layout/activity_scryfall" />
+
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="cz.drekorian.android.planeswalker.settings.SettingsActivity"
+        android:label="SettingsActivity"
+        tools:layout="@layout/activity_settings" />
+
+    <activity
+        android:id="@+id/lifeCounterActivity"
+        android:name="cz.drekorian.android.planeswalker.lifecounter.LifeCounterActivity"
+        android:label="LifeCounterActivity"
+        tools:layout="@layout/activity_life_counter" />
+
+</navigation>

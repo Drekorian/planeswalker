@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_life_counter"
+    app:startDestination="@id/settingsFragment">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="cz.drekorian.android.planeswalker.settings.SettingsFragment"
+        android:label="LifeCounterFragment"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/show_life_settings"
+            app:destination="@id/settingsLifeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsLifeFragment"
+        android:name="cz.drekorian.android.planeswalker.settings.life.SettingsLifeFragment"
+        android:label="SettingsLifeFragment"
+        tools:layout="@layout/fragment_settings_life" />
+
+</navigation>

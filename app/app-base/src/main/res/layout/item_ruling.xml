@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="ruling"
+            type="cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallRuling" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:paddingHorizontal="@dimen/horizontal_margin">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_margin_small"
+            android:text="@{ruling.comment}"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textIsSelectable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Moraug’s first ability checks each turn how many times each creature has attacked. It counts times that creature attacked before Moraug was on the battlefield, and it stops applying if Moraug leaves the battlefield." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/published_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_margin_smaller"
+            android:text="@{ruling.publishedAt.toString()}"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment"
+            tools:text="2020-09-25" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:text="@{ruling.source}"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toEndOf="@id/published_at"
+            app:layout_constraintTop_toTopOf="@id/published_at"
+            tools:text="Source: Wizards of the Coast" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/setListFragment">
+
+    <fragment
+        android:id="@+id/setListFragment"
+        android:name="cz.drekorian.android.planeswalker.set.list.SetListFragment"
+        android:label="SetListFragment"
+        tools:layout="@layout/fragment_set_list">
+
+        <action
+            android:id="@+id/show_set"
+            app:destination="@id/setFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/setFragment"
+        android:name="cz.drekorian.android.planeswalker.set.SetFragment"
+        android:label="SetFragment"
+        tools:layout="@layout/fragment_set">
+
+        <action
+            android:id="@+id/show_card"
+            app:destination="@id/cardFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="cz.drekorian.android.planeswalker.card.CardFragment"
+        android:label="CardFragment"
+        tools:layout="@layout/fragment_card">
+
+        <argument
+            android:name="cardCollectorNumber"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="cardId"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="cardName"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="setCode"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="setName"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+</navigation>

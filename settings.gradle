@@ -1,0 +1,12 @@
+include ':app:app-base',
+        ':app:app-vanilla'
+
+include ':core'
+
+include ':scryfall:scryfall-api',
+        ':scryfall:scryfall-impl'
+
+include ':svg:svg-api',
+        ':svg:svg-impl'
+
+rootProject.name = "Planeswalker's Assistant"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="horizontal_margin">20dp</dimen>
+    <dimen name="horizontal_margin_small">8dp</dimen>
+    <dimen name="vertical_margin">20dp</dimen>
+    <dimen name="vertical_margin_small">16dp</dimen>
+    <dimen name="vertical_margin_smaller">8dp</dimen>
+    <dimen name="vertical_margin_tiny">4dp</dimen>
+
+    <!-- Cards -->
+    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_radius">10dp</dimen>
+
+</resources>
