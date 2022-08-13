@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.COMPILE_SDK)
-    buildToolsVersion = Versions.BUILD_TOOLS
+    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdkVersion(Versions.MIN_SDK)
-        targetSdkVersion(Versions.TARGET_SDK)
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildTypes {
@@ -32,5 +32,5 @@ android {
 dependencies {
 
     // testing dependencies
-    testImplementation(Dependencies.JUNIT)
+    testImplementation(libs.junit)
 }

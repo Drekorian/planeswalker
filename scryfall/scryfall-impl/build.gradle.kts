@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.COMPILE_SDK)
-    buildToolsVersion = Versions.BUILD_TOOLS
+    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdkVersion(Versions.MIN_SDK)
-        targetSdkVersion(Versions.TARGET_SDK)
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildTypes {
@@ -36,16 +36,16 @@ dependencies {
     api(project(":scryfall:scryfall-api"))
 
     // Dagger dependencies
-    implementation(Dependencies.Dagger.DAGGER)
-    kapt(Dependencies.Dagger.DAGGER_COMPILER)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
-    implementation(Dependencies.MOSHI)
+    implementation(libs.moshi)
 
     // Retrofit dependencies
-    implementation(Dependencies.Retrofit.RETROFIT)
-    implementation(Dependencies.Retrofit.RETROFIT_MOSHI)
-    implementation(Dependencies.Retrofit.RETROFIT_SCALARS)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
+    implementation(libs.retrofit.scalars)
 
     // testing dependencies
-    testImplementation(Dependencies.JUNIT)
+    testImplementation(libs.junit)
 }

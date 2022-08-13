@@ -37,7 +37,7 @@ class CardFragment() : BaseToolbarFragment() {
         val setName = arguments?.getString(ARGUMENT_KEY_SET_NAME) ?: return@lazy null
         val collectorNumber =
             arguments?.getString(ARGUMENT_KEY_CARD_COLLECTOR_NUMBER) ?: return@lazy null
-        "$setName (${setCode.toUpperCase(Locale.getDefault())}) #$collectorNumber"
+        "$setName (${setCode.uppercase(Locale.getDefault())}) #$collectorNumber"
     }
 
     @Inject

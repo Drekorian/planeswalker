@@ -1,17 +1,16 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
 }
 
 android {
-    compileSdkVersion(Versions.COMPILE_SDK)
-    buildToolsVersion = Versions.BUILD_TOOLS
+    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdkVersion(Versions.MIN_SDK)
-        targetSdkVersion(Versions.TARGET_SDK)
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildTypes {
@@ -36,13 +35,13 @@ dependencies {
     api(project(":svg:svg-api"))
 
     // Dagger dependencies
-    implementation(Dependencies.Dagger.DAGGER)
-    kapt(Dependencies.Dagger.DAGGER_COMPILER)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
-    implementation(Dependencies.KOTLIN_STDLIB)
-    implementation(Dependencies.OKHTTP)
-    implementation(Dependencies.SHARP)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.okhttp)
+    implementation(libs.sharp)
 
     // testing dependencies
-    testImplementation(Dependencies.JUNIT)
+    testImplementation(libs.junit)
 }

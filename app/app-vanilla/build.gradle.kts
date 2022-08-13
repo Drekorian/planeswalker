@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.COMPILE_SDK)
-    buildToolsVersion = Versions.BUILD_TOOLS
+    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     buildFeatures {
         dataBinding = true
@@ -15,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "cz.drekorian.android.planeswalker"
-        minSdkVersion(Versions.MIN_SDK)
-        targetSdkVersion(Versions.TARGET_SDK)
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -48,23 +48,23 @@ dependencies {
     implementation(project(":svg:svg-impl"))
 
     // AndroidX dependencies
-    implementation(Dependencies.AndroidX.APPCOMPAT)
-    implementation(Dependencies.AndroidX.CORE_KTX)
-    implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT)
-    implementation(Dependencies.AndroidX.FRAGMENT_KTX)
-    implementation(Dependencies.AndroidX.NAVIGATION_FRAGMENT_KTX)
-    implementation(Dependencies.AndroidX.LIFECYCLE_EXTENSIONS)
-    implementation(Dependencies.AndroidX.NAVIGATION_UI_KTX)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.constraintLayout)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Dagger dependencies
-    implementation(Dependencies.Dagger.DAGGER)
-    kapt(Dependencies.Dagger.DAGGER_COMPILER)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
-    implementation(Dependencies.KOTLIN_STDLIB)
-    implementation(Dependencies.MATERIAL)
-    implementation(Dependencies.PICASSO)
-    implementation(Dependencies.THREE_TEN_ABP)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.material)
+    implementation(libs.picasso)
+    implementation(libs.threeTenAbp)
 
     // test dependencies
-    testImplementation(Dependencies.JUNIT)
+    testImplementation(libs.junit)
 }
