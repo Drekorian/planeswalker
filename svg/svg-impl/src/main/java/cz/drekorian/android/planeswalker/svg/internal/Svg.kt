@@ -41,7 +41,7 @@ internal class Svg @Inject constructor(private val okHttpClient: Lazy<OkHttpClie
             if (!response.isSuccessful) {
                 return
             }
-            response.body()?.byteStream()?.use { stream ->
+            response.body?.byteStream()?.use { stream ->
                 Sharp.loadInputStream(stream)
                     .setOnElementListener(object : OnSvgElementListener {
                         override fun onSvgStart(canvas: Canvas, bounds: RectF?) { /* no- op */ }
