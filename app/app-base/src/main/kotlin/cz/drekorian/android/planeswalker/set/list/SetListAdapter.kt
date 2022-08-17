@@ -1,24 +1,22 @@
 package cz.drekorian.android.planeswalker.set.list
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.PorterDuff
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.widget.ImageViewCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import coil.decode.SvgDecoder
+import coil.imageLoader
+import coil.load
+import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallSet
 import cz.drekorian.android.planeswalker.set.SetFragment
-import cz.drekorian.android.planeswalker.settings.SettingsManager
-import cz.drekorian.android.planeswalker.svg.api.SvgApi
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
@@ -32,8 +30,11 @@ import org.threeten.bp.format.FormatStyle
 class SetListAdapter(
     private val context: Context,
     private val sets: List<ScryfallSet>,
-    private val svgApi: SvgApi
 ) : RecyclerView.Adapter<ScryfallSetViewHolder>() {
+
+    private val imageLoader = context.imageLoader.newBuilder()
+        .components { add(SvgDecoder.Factory()) }
+        .build()
 
     override fun getItemCount(): Int = sets.size
 
@@ -61,7 +62,16 @@ class SetListAdapter(
             val typedValue = TypedValue()
             context.theme.resolveAttribute(R.attr.colorOnSurface, typedValue, false)
             val color = typedValue.data
-            svgApi.loadSvg(set.iconSvgUri, holder.icon, color)
+            holder.icon.load(
+                data = set.iconSvgUri,
+                imageLoader = imageLoader,
+            ) {
+                scale(Scale.FIT)
+                crossfade(true)
+                transformations(listOf())
+                //tint(color)
+                println(color)
+            }
         }
     }
 }

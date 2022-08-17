@@ -37,7 +37,6 @@ dependencies {
 
     // module APIs
     api(project(":core"))
-    api(project(":svg:svg-api"))
     api(project(":scryfall:scryfall-api"))
 
     // AndroidX dependencies
@@ -55,6 +54,7 @@ dependencies {
 
     api(libs.kotlin.stdlib)
     implementation(libs.coil)
+    implementation(libs.coil.svg)
     implementation(libs.material)
     implementation(libs.threeTenAbp)
 

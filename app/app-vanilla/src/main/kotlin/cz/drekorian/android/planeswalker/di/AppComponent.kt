@@ -5,7 +5,6 @@ import cz.drekorian.android.planeswalker.di.module.InitializerModule
 import cz.drekorian.android.planeswalker.di.module.CoilModule
 import cz.drekorian.android.planeswalker.di.module.ViewModelModule
 import cz.drekorian.android.planeswalker.scryfall.di.ScryfallModule
-import cz.drekorian.android.planeswalker.svg.di.module.SvgModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -21,7 +20,6 @@ import javax.inject.Singleton
         CoilModule::class,
         InitializerModule::class,
         ScryfallModule::class,
-        SvgModule::class,
         ViewModelModule::class
     ]
 )

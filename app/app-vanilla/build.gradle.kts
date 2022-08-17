@@ -45,7 +45,6 @@ dependencies {
     // local dependencies
     implementation(project(":app:app-base"))
     implementation(project(":scryfall:scryfall-impl"))
-    implementation(project(":svg:svg-impl"))
 
     // AndroidX dependencies
     implementation(libs.androidx.appcompat)
