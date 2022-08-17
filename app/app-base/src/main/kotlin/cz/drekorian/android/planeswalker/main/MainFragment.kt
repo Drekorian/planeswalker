@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.squareup.picasso.Picasso
+import coil.load
+import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentMainBinding
-import javax.inject.Inject
 
 /**
  * This fragment displays the main application actions.
@@ -28,9 +27,6 @@ class MainFragment : BaseToolbarFragment() {
     override val title: String by lazy(LazyThreadSafetyMode.NONE) { getString(R.string.app_name) }
 
     private lateinit var vImage: ImageView
-
-    @Inject
-    lateinit var picasso: Picasso
 
     override fun inject() {
         BaseAppComponentHolder.component.injectMainFragment(this)
@@ -48,13 +44,13 @@ class MainFragment : BaseToolbarFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.randomCard.observe(viewLifecycleOwner, Observer { card ->
-            picasso
-                .load(card.primaryPng)
-                .placeholder(R.drawable.card_back)
-                .fit()
-                .centerCrop()
-                .into(vImage)
-        })
+        viewModel.randomCard.observe(viewLifecycleOwner) { card ->
+            vImage.load(card.primaryPng) {
+                placeholder(R.drawable.card_back)
+                scale(Scale.FIT)
+                crossfade(true)
+                // centerCrop()
+            }
+        }
     }
 }

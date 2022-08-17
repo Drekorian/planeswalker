@@ -61,8 +61,8 @@ dependencies {
     kapt(libs.dagger.compiler)
 
     implementation(libs.kotlin.stdlib)
+    implementation(libs.coil)
     implementation(libs.material)
-    implementation(libs.picasso)
     implementation(libs.threeTenAbp)
 
     // test dependencies

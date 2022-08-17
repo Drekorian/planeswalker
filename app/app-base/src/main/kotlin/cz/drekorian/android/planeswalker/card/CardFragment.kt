@@ -3,18 +3,24 @@ package cz.drekorian.android.planeswalker.card
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
+import coil.load
+import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentCardBinding
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 /**
@@ -39,9 +45,6 @@ class CardFragment() : BaseToolbarFragment() {
             arguments?.getString(ARGUMENT_KEY_CARD_COLLECTOR_NUMBER) ?: return@lazy null
         "$setName (${setCode.uppercase(Locale.getDefault())}) #$collectorNumber"
     }
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var cardFlipHelper: CardFlipHelper
@@ -74,20 +77,17 @@ class CardFragment() : BaseToolbarFragment() {
             }
 
             cardFlipHelper.initialize(card, vImage)
-            picasso
-                .load(card.primaryPng)
-                .placeholder(R.drawable.card_back)
-                .fit()
-                .centerCrop()
-                .into(vImage, object : Callback {
-                    override fun onSuccess() {
-                        vImage.isClickable = true
+            vImage.load(card.primaryPng) {
+                scale(Scale.FIT)
+                // centerCrop()
+                placeholder(R.drawable.card_back)
+                crossfade(true)
+                listener(
+                    onSuccess = { _, _ ->
                         vImage.setOnClickListener { cardFlipHelper.flip() }
-                    }
-
-                    override fun onError(e: Exception?) { /* no-op */
-                    }
-                })
+                    },
+                )
+            }
         })
     }
 

@@ -2,7 +2,8 @@ package cz.drekorian.android.planeswalker
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
-import com.squareup.picasso.Transformation
+import coil.size.Size
+import coil.transform.Transformation
 
 /**
  * This [Transformation] flips the source [Bitmap] horizontally.
@@ -11,12 +12,13 @@ import com.squareup.picasso.Transformation
  */
 class FlipTransformation : Transformation {
 
-    override fun key() = KEY
+    override val cacheKey: String
+        get() = KEY
 
-    override fun transform(source: Bitmap): Bitmap {
+    override suspend fun transform(input: Bitmap, size: Size): Bitmap {
         val matrix: Matrix = Matrix().apply { preScale(AXIS_REVERSE, AXIS_ID) }
-        val output = Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
-        source.recycle()
+        val output = Bitmap.createBitmap(input, 0, 0, input.width, input.height, matrix, true)
+        input.recycle()
         return output
     }
 

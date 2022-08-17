@@ -2,7 +2,7 @@ package cz.drekorian.android.planeswalker.di
 
 import android.app.Application
 import cz.drekorian.android.planeswalker.di.module.InitializerModule
-import cz.drekorian.android.planeswalker.di.module.PicassoModule
+import cz.drekorian.android.planeswalker.di.module.CoilModule
 import cz.drekorian.android.planeswalker.di.module.ViewModelModule
 import cz.drekorian.android.planeswalker.scryfall.di.ScryfallModule
 import cz.drekorian.android.planeswalker.svg.di.module.SvgModule
@@ -18,8 +18,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        CoilModule::class,
         InitializerModule::class,
-        PicassoModule::class,
         ScryfallModule::class,
         SvgModule::class,
         ViewModelModule::class
