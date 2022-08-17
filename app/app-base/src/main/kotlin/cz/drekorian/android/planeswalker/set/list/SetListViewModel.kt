@@ -56,6 +56,5 @@ fun setAdapter(recyclerView: RecyclerView, list: List<ScryfallSet>?) {
     recyclerView.adapter = SetListAdapter(
         context = recyclerView.context,
         sets = list,
-        svgApi = component.svgApi()
     )
 }

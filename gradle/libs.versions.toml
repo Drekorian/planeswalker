@@ -37,6 +37,7 @@ androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fr
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation"}
 androidx-navigation-safe-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx-navigation"}
 coil = { module = "io.coil-kt:coil", version.ref = "coil"}
+coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil"}
 dagger = { module = "com.google.dagger:dagger-android", version.ref = "dagger"}
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger"}
 material = { module = "com.google.android.material:material", version.ref = "material"}

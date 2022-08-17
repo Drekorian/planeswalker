@@ -8,7 +8,6 @@ import cz.drekorian.android.planeswalker.main.MainActivity
 import cz.drekorian.android.planeswalker.main.MainFragment
 import cz.drekorian.android.planeswalker.scryfall.api.ScryfallApi
 import cz.drekorian.android.planeswalker.settings.SettingsManager
-import cz.drekorian.android.planeswalker.svg.api.SvgApi
 
 /**
  * This interface provides common interface for application components.
@@ -19,7 +18,6 @@ interface BaseAppComponent {
 
     fun moduleInitializer(): ModuleInitializer
     fun settingsManager(): SettingsManager
-    fun svgApi(): SvgApi
     fun scryfallApi(): ScryfallApi
 
     // base
