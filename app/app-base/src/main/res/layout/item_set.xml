@@ -39,6 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/colorOnSurface"
         tools:ignore="ContentDescription"
         tools:src="@android:drawable/ic_menu_gallery" />
 
