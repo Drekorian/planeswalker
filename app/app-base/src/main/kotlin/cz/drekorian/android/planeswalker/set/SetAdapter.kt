@@ -8,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import coil.load
+import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 
@@ -46,12 +47,11 @@ class SetAdapter(
                 )
             }
 
-            Picasso.get()
-                .load(card.primaryArtCrop)
-                .placeholder(R.drawable.bg_card_grid_placeholder)
-                .fit()
-                .centerCrop()
-                .into(holder.image)
+            holder.image
+            holder.image.load(card.primaryArtCrop) {
+                placeholder(R.drawable.bg_card_grid_placeholder)
+                scale(Scale.FIT)
+            }
 
             holder.name.text = card.name
         }

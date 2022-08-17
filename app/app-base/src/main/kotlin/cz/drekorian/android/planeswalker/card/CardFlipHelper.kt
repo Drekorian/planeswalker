@@ -3,7 +3,9 @@ package cz.drekorian.android.planeswalker.card
 import android.animation.ValueAnimator
 import android.widget.ImageView
 import androidx.annotation.MainThread
-import com.squareup.picasso.Picasso
+import coil.Coil
+import coil.load
+import coil.size.Scale
 import cz.drekorian.android.planeswalker.FlipTransformation
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
@@ -15,7 +17,7 @@ import javax.inject.Inject
  *
  * @author Marek Osvald
  */
-class CardFlipHelper @Inject constructor(private val picasso: Picasso) {
+class CardFlipHelper @Inject constructor(private val coil: Coil) {
 
     private lateinit var card: ScryfallCard
 
@@ -43,11 +45,13 @@ class CardFlipHelper @Inject constructor(private val picasso: Picasso) {
             .setUpdateListener(
                 when (imageView.rotationY) {
                     FRONT_SIDE_ROTATION -> ForwardAnimationUpdateListener(
-                        card,
-                        picasso,
-                        this.imageView
+                        card = card,
+                        imageView = this.imageView
                     )
-                    else -> ReverseAnimatorUpdateListener(card, picasso, this.imageView)
+                    else -> ReverseAnimatorUpdateListener(
+                        card = card,
+                        imageView = this.imageView
+                    )
                 }
             )
             .start()
@@ -55,7 +59,6 @@ class CardFlipHelper @Inject constructor(private val picasso: Picasso) {
 
     private class ForwardAnimationUpdateListener(
         private val card: ScryfallCard,
-        private val picasso: Picasso,
         private val imageView: WeakReference<ImageView>
     ) : ValueAnimator.AnimatorUpdateListener {
 
@@ -64,24 +67,23 @@ class CardFlipHelper @Inject constructor(private val picasso: Picasso) {
         override fun onAnimationUpdate(animation: ValueAnimator) {
             if (!isFlipped && (animation.animatedValue as Float) >= 0.4f) {
                 isFlipped = true
-                picasso
-                    .run {
-                        when {
-                            card.isDoubleFaced -> load(card.cardFaces!![1].imageUris!!.png)
-                            else -> load(R.drawable.card_back)
-                        }
+                imageView.get()?.load(
+                    when {
+                        card.isDoubleFaced -> card.cardFaces!![1].imageUris!!.png
+                        else -> R.drawable.card_back
                     }
-                    .fit()
-                    .centerCrop()
-                    .transform(FlipTransformation())
-                    .into(imageView.get() ?: return)
+                ) {
+                    scale(Scale.FIT)
+                    //.centerCrop()
+                    crossfade(true)
+                    transformations(listOf(FlipTransformation()))
+                }
             }
         }
     }
 
     private class ReverseAnimatorUpdateListener(
         private val card: ScryfallCard,
-        private val picasso: Picasso,
         private val imageView: WeakReference<ImageView>
     ) : ValueAnimator.AnimatorUpdateListener {
 
@@ -90,11 +92,12 @@ class CardFlipHelper @Inject constructor(private val picasso: Picasso) {
         override fun onAnimationUpdate(animation: ValueAnimator) {
             if (!isFlipped && (animation.animatedValue as Float) >= 0.4f) {
                 isFlipped = true
-                picasso
-                    .load(card.primaryPng)
-                    .fit()
-                    .centerCrop()
-                    .into(imageView.get() ?: return)
+                imageView.get()?.load(card.primaryPng)
+                imageView.get()?.load(card.primaryPng) {
+                    scale(Scale.FIT)
+                    crossfade(true)
+                    // centerCrop()
+                }
             }
         }
     }

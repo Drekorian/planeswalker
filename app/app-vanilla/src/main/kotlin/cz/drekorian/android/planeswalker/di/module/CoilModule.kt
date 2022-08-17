@@ -1,17 +1,17 @@
 package cz.drekorian.android.planeswalker.di.module
 
-import com.squareup.picasso.Picasso
+import coil.Coil
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * This module provides Picasso-related dependencies.
+ * This module provides Coil-related dependencies.
  */
 @Module
-class PicassoModule {
+class CoilModule {
 
     @Provides
     @Singleton
-    fun providePicasso(): Picasso = Picasso.get()
+    fun provideCoil(): Coil = Coil
 }
