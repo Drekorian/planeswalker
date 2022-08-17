@@ -49,7 +49,6 @@ class MainFragment : BaseToolbarFragment() {
                 placeholder(R.drawable.card_back)
                 scale(Scale.FIT)
                 crossfade(true)
-                // centerCrop()
             }
         }
     }

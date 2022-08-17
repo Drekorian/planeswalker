@@ -79,7 +79,6 @@ class CardFragment() : BaseToolbarFragment() {
             cardFlipHelper.initialize(card, vImage)
             vImage.load(card.primaryPng) {
                 scale(Scale.FIT)
-                // centerCrop()
                 placeholder(R.drawable.card_back)
                 crossfade(true)
                 listener(

@@ -1,7 +1,6 @@
 package cz.drekorian.android.planeswalker.set.list
 
 import android.content.Context
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,19 +57,12 @@ class SetListAdapter(
             holder.title.text = set.name
             holder.releasedAt.text =
                 set.releasedAt.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
-
-            val typedValue = TypedValue()
-            context.theme.resolveAttribute(R.attr.colorOnSurface, typedValue, false)
-            val color = typedValue.data
             holder.icon.load(
                 data = set.iconSvgUri,
                 imageLoader = imageLoader,
             ) {
                 scale(Scale.FIT)
                 crossfade(true)
-                transformations(listOf())
-                //tint(color)
-                println(color)
             }
         }
     }

@@ -74,7 +74,6 @@ class CardFlipHelper @Inject constructor(private val coil: Coil) {
                     }
                 ) {
                     scale(Scale.FIT)
-                    //.centerCrop()
                     crossfade(true)
                     transformations(listOf(FlipTransformation()))
                 }
@@ -92,11 +91,9 @@ class CardFlipHelper @Inject constructor(private val coil: Coil) {
         override fun onAnimationUpdate(animation: ValueAnimator) {
             if (!isFlipped && (animation.animatedValue as Float) >= 0.4f) {
                 isFlipped = true
-                imageView.get()?.load(card.primaryPng)
                 imageView.get()?.load(card.primaryPng) {
                     scale(Scale.FIT)
                     crossfade(true)
-                    // centerCrop()
                 }
             }
         }
