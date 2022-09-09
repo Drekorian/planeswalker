@@ -11,7 +11,7 @@ androidx-core-ctx = "1.8.0"
 androidx-constraintLayout = "2.1.4"
 androidx-fragment-ktx = "1.5.2"
 androidx-lifecycle-extensions = "2.2.0"
-androidx-navigation = "2.5.1"
+androidx-navigation = "2.5.2"
 
 coil  = "2.2.1"
 dagger  = "2.43.2"
