@@ -52,7 +52,6 @@ fun setAdapter(recyclerView: RecyclerView, list: List<ScryfallSet>?) {
         return
     }
 
-    val component = BaseAppComponentHolder.component
     recyclerView.adapter = SetListAdapter(
         context = recyclerView.context,
         sets = list,
