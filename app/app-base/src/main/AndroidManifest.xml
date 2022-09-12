@@ -3,7 +3,9 @@
     package="cz.drekorian.android.planeswalker">
 
     <application android:theme="@style/Theme.PlaneswalkerAssistant">
-        <activity android:name=".main.MainActivity">
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
