@@ -1,5 +1,6 @@
 [versions]
 
+androidGradlePlugin = "7.3.0-rc01"
 buildTools = "33"
 compileSdk = "33"
 kotlin = "1.7.10"
@@ -13,8 +14,8 @@ androidx-fragment-ktx = "1.5.2"
 androidx-lifecycle-extensions = "2.2.0"
 androidx-navigation = "2.5.2"
 
-coil  = "2.2.1"
-dagger  = "2.43.2"
+coil = "2.2.1"
+dagger = "2.43.2"
 material = "1.6.1"
 moshi = "1.14.0"
 okhttp = "4.10.0"
@@ -25,7 +26,7 @@ junit = "4.13.2"
 
 [libraries]
 
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin"}
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat"}
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ctx"}
@@ -33,8 +34,8 @@ androidx-constraintLayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment-ktx"}
 androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidx-lifecycle-extensions"}
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation"}
+androidx-navigation-safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx-navigation"}
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation"}
-androidx-navigation-safe-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx-navigation"}
 coil = { module = "io.coil-kt:coil", version.ref = "coil"}
 coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil"}
 dagger = { module = "com.google.dagger:dagger-android", version.ref = "dagger"}
