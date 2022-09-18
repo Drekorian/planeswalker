@@ -55,9 +55,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // Dagger dependencies
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
+    // Koin dependencies
+    implementation(libs.koin.android)
 
     implementation(libs.kotlin.stdlib)
     implementation(libs.coil)

@@ -37,9 +37,8 @@ android {
         // propagate API module up
         api(project(":scryfall:scryfall-api"))
 
-        // Dagger dependencies
-        implementation(libs.dagger)
-        kapt(libs.dagger.compiler)
+        // Koin dependencies
+        implementation(libs.koin.android)
 
         implementation(libs.kotlinx.datetime)
         implementation(libs.kotlinx.serialization.json)

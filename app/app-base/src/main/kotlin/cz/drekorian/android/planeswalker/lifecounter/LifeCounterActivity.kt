@@ -2,9 +2,9 @@ package cz.drekorian.android.planeswalker.lifecounter
 
 import android.os.Bundle
 import android.view.KeyEvent
-import androidx.activity.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.activity.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This activity hosts the [LifeCounterFragment].
@@ -15,7 +15,7 @@ import cz.drekorian.android.planeswalker.base.activity.BaseActivity
  */
 class LifeCounterActivity : BaseActivity() {
 
-    val viewModel: LifeCounterViewModel by viewModels { viewModelFactory }
+    val viewModel: LifeCounterViewModel by stateViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

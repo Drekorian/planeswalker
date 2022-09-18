@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.databinding.BindingAdapter
-import androidx.fragment.app.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentSettingsLifeBinding
 import cz.drekorian.android.planeswalker.settings.SettingsManager
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This fragment displays the Life Counter settings.
@@ -21,7 +21,7 @@ import cz.drekorian.android.planeswalker.settings.SettingsManager
  */
 class SettingsLifeFragment : BaseToolbarFragment() {
 
-    private val viewModel: SettingsLifeViewModel by viewModels { viewModelFactory }
+    private val viewModel: SettingsLifeViewModel by stateViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_settings_life_title)

@@ -3,7 +3,6 @@ package cz.drekorian.android.planeswalker.card
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -11,26 +10,25 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import coil.load
 import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
-import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentCardBinding
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 import java.util.Locale
-import javax.inject.Inject
 
 /**
  * This fragment displays detailed information about a single card.
  *
  * @author Marek Osvald
  */
-class CardFragment() : BaseToolbarFragment() {
+class CardFragment : BaseToolbarFragment() {
 
-    private val viewModel: CardViewModel by viewModels { viewModelFactory }
+    private val viewModel: CardViewModel by stateViewModel()
 
     private lateinit var vImage: ImageView
 
@@ -46,17 +44,12 @@ class CardFragment() : BaseToolbarFragment() {
         "$setName (${setCode.uppercase(Locale.getDefault())}) #$collectorNumber"
     }
 
-    @Inject
-    lateinit var cardFlipHelper: CardFlipHelper
+    private val cardFlipHelper: CardFlipHelper by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.fetchCard(arguments?.getString(ARGUMENT_KEY_CARD_ID) ?: return)
         setHasOptionsMenu(true)
-    }
-
-    override fun inject() {
-        BaseAppComponentHolder.component.injectCardFragment(this)
     }
 
     override fun onCreateView(

@@ -8,6 +8,8 @@ import androidx.fragment.app.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentSetListBinding
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This fragment displays a list of MTG sets.
@@ -18,7 +20,7 @@ import cz.drekorian.android.planeswalker.databinding.FragmentSetListBinding
  */
 class SetListFragment : BaseToolbarFragment() {
 
-    private val viewModel: SetListViewModel by viewModels { viewModelFactory }
+    private val viewModel: SetListViewModel by stateViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_set_list_title)

@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.viewModels
 import coil.load
 import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
-import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentMainBinding
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This fragment displays the main application actions.
@@ -22,15 +21,11 @@ import cz.drekorian.android.planeswalker.databinding.FragmentMainBinding
  */
 class MainFragment : BaseToolbarFragment() {
 
-    private val viewModel: MainViewModel by viewModels { viewModelFactory }
+    private val viewModel: MainViewModel by stateViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) { getString(R.string.app_name) }
 
     private lateinit var vImage: ImageView
-
-    override fun inject() {
-        BaseAppComponentHolder.component.injectMainFragment(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

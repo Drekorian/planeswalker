@@ -2,17 +2,13 @@ package cz.drekorian.android.planeswalker.set.list
 
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
 import cz.drekorian.android.planeswalker.scryfall.api.ApiResponse
 import cz.drekorian.android.planeswalker.scryfall.api.ScryfallApi
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallSet
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallSetList
-import cz.drekorian.android.planeswalker.util.mapApiResponse
 import cz.drekorian.android.planeswalker.util.mapApiResponseList
-import javax.inject.Inject
 
 /**
  * This view model handles [SetListFragment] business logic.
@@ -21,7 +17,9 @@ import javax.inject.Inject
  * @see SetListFragment
  * @author Marek Osvald
  */
-class SetListViewModel @Inject constructor(private val scryfallApi: ScryfallApi) : ViewModel() {
+class SetListViewModel(
+    private val scryfallApi: ScryfallApi,
+) : ViewModel() {
 
     private lateinit var setsApiResponse: LiveData<ApiResponse<ScryfallSetList>>
 

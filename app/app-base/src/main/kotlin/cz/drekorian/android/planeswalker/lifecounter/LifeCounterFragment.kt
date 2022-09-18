@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentLifeCounterBinding
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This fragment displays the life counter.
@@ -19,10 +20,7 @@ import cz.drekorian.android.planeswalker.databinding.FragmentLifeCounterBinding
  */
 class LifeCounterFragment : BaseToolbarFragment() {
 
-    private val viewModel: LifeCounterViewModel by viewModels(
-        ownerProducer = { activity as AppCompatActivity },
-        factoryProducer = { viewModelFactory }
-    )
+    private val viewModel: LifeCounterViewModel by stateViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_life_counter_title)

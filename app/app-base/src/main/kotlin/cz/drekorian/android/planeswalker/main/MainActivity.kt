@@ -3,11 +3,9 @@ package cz.drekorian.android.planeswalker.main
 import android.os.Bundle
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.activity.BaseActivity
-import cz.drekorian.android.planeswalker.base.di.BaseAppComponentHolder
-import cz.drekorian.android.planeswalker.core.ModuleInitializer
 import cz.drekorian.android.planeswalker.settings.SettingsManager
 import cz.drekorian.android.planeswalker.settings.ThemeHelper
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /**
  * This activity displays the hosts of the main UI navigation component fragments.
@@ -17,23 +15,13 @@ import javax.inject.Inject
  */
 class MainActivity : BaseActivity() {
 
-    @Inject
-    lateinit var moduleInitializer: ModuleInitializer
+    private val settingsManager: SettingsManager by inject()
 
-    @Inject
-    lateinit var settingsManager: SettingsManager
-
-    @Inject
-    lateinit var themeHelper: ThemeHelper
+    private val themeHelper: ThemeHelper by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        moduleInitializer.initializeLazy(application)
         themeHelper.enforceDarkMode(settingsManager.isDarkMode)
-    }
-
-    override fun inject() {
-        BaseAppComponentHolder.component.injectMainActivity(this)
     }
 }

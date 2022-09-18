@@ -5,16 +5,13 @@ import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * This factory provides [LiveDataCallAdapter]s.
  *
  * @author Marek Osvald
  */
-@Singleton
-class LiveDataCallAdapterFactory @Inject constructor() : CallAdapter.Factory() {
+internal class LiveDataCallAdapterFactory : CallAdapter.Factory() {
     override fun get(
         returnType: Type,
         annotations: Array<Annotation>,

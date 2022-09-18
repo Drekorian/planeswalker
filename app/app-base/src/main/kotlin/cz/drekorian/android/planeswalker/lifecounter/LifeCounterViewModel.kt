@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import cz.drekorian.android.planeswalker.settings.SettingsManager
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles the business logic for [LifeCounterFragment].
@@ -13,8 +12,8 @@ import javax.inject.Inject
  * @see LifeCounterFragment
  * @author Marek Osvald
  */
-class LifeCounterViewModel @Inject constructor(
-    private val settingsManager: SettingsManager
+class LifeCounterViewModel(
+    private val settingsManager: SettingsManager,
 ) : ViewModel() {
 
     private val _life: MutableLiveData<Int> = MutableLiveData(settingsManager.defaultLifeCount)

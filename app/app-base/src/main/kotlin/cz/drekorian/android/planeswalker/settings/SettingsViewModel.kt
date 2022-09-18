@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.Checkable
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles the business logic the [SettingsFragment].
@@ -12,7 +11,7 @@ import javax.inject.Inject
  * @see SettingsFragment
  * @author Marek Osvald
  */
-class SettingsViewModel @Inject constructor(
+class SettingsViewModel(
     private val settingsManager: SettingsManager,
     private val themeHelper: ThemeHelper
 ) : ViewModel() {

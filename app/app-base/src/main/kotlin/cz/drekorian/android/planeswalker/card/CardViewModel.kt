@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import cz.drekorian.android.planeswalker.databinding.ItemRulingBinding
 import cz.drekorian.android.planeswalker.scryfall.api.ApiResponse
@@ -14,7 +13,6 @@ import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallRuling
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallRulingList
 import cz.drekorian.android.planeswalker.util.mapApiResponse
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles logic for card detail screen.
@@ -22,7 +20,9 @@ import javax.inject.Inject
  * @author Marek Osvald
  * @see CardFragment
  */
-class CardViewModel @Inject constructor(private val scryfallApi: ScryfallApi) : ViewModel() {
+class CardViewModel(
+    private val scryfallApi: ScryfallApi,
+) : ViewModel() {
 
     private lateinit var cardApiResponse: LiveData<ApiResponse<ScryfallCard>>
 
