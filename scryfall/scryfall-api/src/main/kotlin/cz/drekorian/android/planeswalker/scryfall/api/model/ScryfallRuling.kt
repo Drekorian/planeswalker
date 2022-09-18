@@ -1,5 +1,6 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
+import cz.drekorian.android.planeswalker.scryfall.internal.adapter.ScryfallSourceSerializer
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNames
@@ -18,6 +19,7 @@ import kotlinx.serialization.json.JsonNames
  */
 @Serializable
 data class ScryfallRuling(
+    @Serializable(with = ScryfallSourceSerializer::class)
     @JsonNames("source") val source: String,
     @JsonNames("published_at") val publishedAt: LocalDate,
     @JsonNames("comment") val comment: String
