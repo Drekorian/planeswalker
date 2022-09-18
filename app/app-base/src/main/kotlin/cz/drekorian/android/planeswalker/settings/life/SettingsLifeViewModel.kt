@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import cz.drekorian.android.planeswalker.settings.SettingsManager
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles the [SettingsLifeFragment] business logic.
@@ -12,7 +11,7 @@ import javax.inject.Inject
  * @see SettingsLifeFragment
  * @author Marek Osvald
  */
-class SettingsLifeViewModel @Inject constructor(
+class SettingsLifeViewModel(
     private val settingsManager: SettingsManager
 ) : ViewModel() {
 

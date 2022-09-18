@@ -9,14 +9,15 @@ import cz.drekorian.android.planeswalker.scryfall.api.ScryfallApi
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCardList
 import cz.drekorian.android.planeswalker.util.mapApiResponseList
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles the business logic of [SetViewModel].
  *
  * @author Marek Osvald
  */
-class SetViewModel @Inject constructor(private val scryfallApi: ScryfallApi) : ViewModel() {
+class SetViewModel(
+    private val scryfallApi: ScryfallApi,
+) : ViewModel() {
 
     private lateinit var cardsApiResponse: LiveData<ApiResponse<ScryfallCardList>>
 

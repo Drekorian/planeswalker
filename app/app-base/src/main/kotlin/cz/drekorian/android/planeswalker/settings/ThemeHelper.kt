@@ -1,16 +1,13 @@
 package cz.drekorian.android.planeswalker.settings
 
 import androidx.appcompat.app.AppCompatDelegate
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * This class handles switching application themes.
  *
  * @author Marek Osvald
  */
-@Singleton
-class ThemeHelper @Inject constructor() {
+class ThemeHelper {
 
     /**
      * Switches theme based on the [enforceDarkMode] value.

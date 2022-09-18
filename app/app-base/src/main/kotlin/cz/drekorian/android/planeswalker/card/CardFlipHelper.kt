@@ -3,21 +3,19 @@ package cz.drekorian.android.planeswalker.card
 import android.animation.ValueAnimator
 import android.widget.ImageView
 import androidx.annotation.MainThread
-import coil.Coil
 import coil.load
 import coil.size.Scale
 import cz.drekorian.android.planeswalker.FlipTransformation
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import java.lang.ref.WeakReference
-import javax.inject.Inject
 
 /**
  * This helper class handles the flip animation in the card details fragment.
  *
  * @author Marek Osvald
  */
-class CardFlipHelper @Inject constructor(private val coil: Coil) {
+class CardFlipHelper {
 
     private lateinit var card: ScryfallCard
 

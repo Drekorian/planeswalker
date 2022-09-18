@@ -8,7 +8,6 @@ import cz.drekorian.android.planeswalker.scryfall.api.ApiResponse
 import cz.drekorian.android.planeswalker.scryfall.api.ScryfallApi
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import cz.drekorian.android.planeswalker.util.mapApiResponse
-import javax.inject.Inject
 
 /**
  * This [ViewModel] handles business logic for [MainFragment].
@@ -16,9 +15,12 @@ import javax.inject.Inject
  * @see MainFragment
  * @author Marek Osvald
  */
-class MainViewModel @Inject constructor(private val scryfallApi: ScryfallApi) : ViewModel() {
+class MainViewModel(
+    scryfallApi: ScryfallApi,
+) : ViewModel() {
 
-    private val randomCardApiResponse: LiveData<ApiResponse<ScryfallCard>> = scryfallApi.getRandomCard()
+    private val randomCardApiResponse: LiveData<ApiResponse<ScryfallCard>> =
+        scryfallApi.getRandomCard()
 
     /**
      * Stores a retrieved random card.

@@ -7,19 +7,18 @@ import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCardList
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallRulingList
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallSetList
-import cz.drekorian.android.planeswalker.scryfall.internal.di.ScryfallComponentHolder
 import cz.drekorian.android.planeswalker.scryfall.internal.retrofit.ScryfallService
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 /**
  * This object serves as the default implementation of [ScryfallApi].
  *
  * @author Marek Osvald
  */
-object Scryfall : ScryfallApi {
+object Scryfall : ScryfallApi, KoinComponent {
 
-    private val scryfallService by lazy(LazyThreadSafetyMode.NONE) {
-        ScryfallComponentHolder.component.scryfallService()
-    }
+    private val scryfallService: ScryfallService by inject()
 
     override fun getSets(): LiveData<ApiResponse<ScryfallSetList>> =
         scryfallService.getSets()

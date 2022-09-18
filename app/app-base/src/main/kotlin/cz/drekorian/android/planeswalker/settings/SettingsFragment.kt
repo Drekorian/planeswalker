@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentSettingsBinding
+import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 /**
  * This fragment displays the user settings.
@@ -18,7 +19,7 @@ import cz.drekorian.android.planeswalker.databinding.FragmentSettingsBinding
  */
 class SettingsFragment : BaseToolbarFragment() {
 
-    private val viewModel: SettingsViewModel by viewModels { viewModelFactory }
+    private val viewModel: SettingsViewModel by stateViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_settings_title)

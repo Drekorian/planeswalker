@@ -3,16 +3,13 @@ package cz.drekorian.android.planeswalker.settings
 import android.app.Application
 import android.content.Context
 import androidx.core.content.edit
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * This singleton handles user settings and their persistence.
  *
  * @author Marek Osvald
  */
-@Singleton
-class SettingsManager @Inject constructor(application: Application) {
+class SettingsManager(application: Application) {
 
     private val preferences =
         application.getSharedPreferences(PREFERENCES_NAME_SETTINGS, Context.MODE_PRIVATE)
