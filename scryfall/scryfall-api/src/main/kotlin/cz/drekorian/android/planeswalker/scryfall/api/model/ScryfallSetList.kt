@@ -1,6 +1,7 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents a list of [ScryfallSet]s.
@@ -9,7 +10,8 @@ import com.squareup.moshi.Json
  * @author Marek Osvald
  * @see ScryfallSet
  */
+@Serializable
 data class ScryfallSetList(
-    @Json(name = "has_more") val hasMore: Boolean,
-    override val data: List<ScryfallSet>
+    @JsonNames("has_more") val hasMore: Boolean,
+    @JsonNames("data") override val data: List<ScryfallSet>
 ) : ScryfallList<ScryfallSet>

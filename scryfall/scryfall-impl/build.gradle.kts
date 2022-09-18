@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -26,25 +27,28 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
+        )
     }
-}
 
-dependencies {
+    dependencies {
 
-    // propagate API module up
-    api(project(":scryfall:scryfall-api"))
+        // propagate API module up
+        api(project(":scryfall:scryfall-api"))
 
-    // Dagger dependencies
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
+        // Dagger dependencies
+        implementation(libs.dagger)
+        kapt(libs.dagger.compiler)
 
-    implementation(libs.moshi)
+        implementation(libs.kotlinx.datetime)
+        implementation(libs.kotlinx.serialization.json)
 
-    // Retrofit dependencies
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.moshi)
-    implementation(libs.retrofit.scalars)
+        // Retrofit dependencies
+        implementation(libs.retrofit)
+        implementation(libs.retrofit.kotlinx.serialization)
 
-    // testing dependencies
-    testImplementation(libs.junit)
+        // testing dependencies
+        testImplementation(libs.junit)
+    }
 }

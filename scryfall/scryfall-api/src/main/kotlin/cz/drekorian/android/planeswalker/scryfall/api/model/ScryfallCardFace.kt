@@ -1,6 +1,7 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents a single card-face of a multi-faced card.
@@ -13,8 +14,9 @@ import com.squareup.moshi.Json
  * @see ScryfallCardImagery
  * @author Marek Osvald
  */
+@Serializable
 data class ScryfallCardFace(
     val name: String,
-    @Json(name = "image_uris") val imageUris: ScryfallCardImagery?,
-    @Json(name = "oracle_text") val oracleText: String
+    @JsonNames("image_uris") val imageUris: ScryfallCardImagery?,
+    @JsonNames("oracle_text") val oracleText: String
 )

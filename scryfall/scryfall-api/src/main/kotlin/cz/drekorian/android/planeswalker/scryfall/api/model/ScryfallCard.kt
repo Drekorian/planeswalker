@@ -1,6 +1,8 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents a single MTG card.
@@ -37,32 +39,33 @@ import com.squareup.moshi.Json
  * @see ScryfallRuling
  * @author Marek Osvald
  */
+@Serializable
 data class ScryfallCard(
-    @Json(name = "arena_id") val arenaId: Int?,
-    @Json(name = "collector_number") val collectorNumber: String,
-    val id: String,
-    val lang: String,
-    @Json(name = "mtgo_id") val mtgoId: Int?,
-    @Json(name = "mtgo_foil_id") val mtgoFoilId: Int?,
-    @Json(name = "multiverse_ids") val multiverseIds: List<Int>,
-    @Json(name = "tcgplayer_id") val tcgPlayerId: Int?,
-    @Json(name = "cardmarket_id") val cardMarketId: Int?,
-    @Json(name = "oracle_id") val oracleId: String,
-    @Json(name = "prints_search_uri") val printsSearchUri: String,
-    @Json(name = "rulings_uri") val rulingsUri: String,
-    @Json(name = "scryfall_uri") val scryfallUri: String,
-    val uri: String,
-    val name: String,
-    @Json(name = "image_uris") val imageUris: ScryfallCardImagery?,
-    @Json(name = "type_line") val typeLine: String,
-    @Json(name = "oracle_text") val oracleText: String?,
-    @Json(name = "flavor_text") val flavorText: String?,
-    val power: String?,
-    val toughness: String?,
-    val artist: String,
-    val set: String,
-    @Json(name = "set_name") val setName: String,
-    @Json(name = "card_faces") val cardFaces: List<ScryfallCardFace>?
+    @JsonNames("arena_id") val arenaId: Int? = null,
+    @JsonNames("collector_number") val collectorNumber: String,
+    @JsonNames("id") val id: String,
+    @JsonNames("lang") val lang: String,
+    @JsonNames("mtgo_id") val mtgoId: Int? = null,
+    @JsonNames("mtgo_foil_id") val mtgoFoilId: Int? = null,
+    @JsonNames("multiverse_ids") val multiverseIds: List<Int>,
+    @JsonNames("tcgplayer_id") val tcgPlayerId: Int? = null,
+    @JsonNames("cardmarket_id") val cardMarketId: Int? = null,
+    @JsonNames("oracle_id") val oracleId: String,
+    @JsonNames("prints_search_uri") val printsSearchUri: String,
+    @JsonNames("rulings_uri") val rulingsUri: String,
+    @JsonNames("scryfall_uri") val scryfallUri: String,
+    @JsonNames("uri") val uri: String,
+    @JsonNames("name") val name: String,
+    @JsonNames("image_uris") val imageUris: ScryfallCardImagery?,
+    @JsonNames("type_line") val typeLine: String,
+    @JsonNames("oracle_text") val oracleText: String?,
+    @JsonNames("flavor_text") val flavorText: String? = null,
+    @JsonNames("power") val power: String? = null,
+    @JsonNames("toughness") val toughness: String? = null,
+    @JsonNames("artist") val artist: String,
+    @JsonNames("set") val set: String,
+    @JsonNames("set_name") val setName: String,
+    @JsonNames("card_faces") val cardFaces: List<ScryfallCardFace>? = null
 ) {
     /**
      * Stores primary cropped art image.
@@ -84,8 +87,8 @@ data class ScryfallCard(
      */
     @Transient
     val primaryPng: String = when {
-        isDoubleFaced -> cardFaces!!.first().imageUris!!.png
-        else -> imageUris!!.png
+        isDoubleFaced -> cardFaces?.first()?.imageUris?.png ?: ""
+        else -> imageUris?.png ?: ""
     }
 
     /**

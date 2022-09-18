@@ -1,3 +1,5 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 buildscript {
     repositories {
         google()
@@ -9,6 +11,10 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${libs.versions.androidx.navigation.get()}")
     }
+}
+
+plugins {
+    kotlin("plugin.serialization") version libs.versions.kotlin.get() apply false
 }
 
 allprojects {

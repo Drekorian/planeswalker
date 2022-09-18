@@ -1,6 +1,8 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
+
 
 /**
  * This data class represents a list of scryfall rulings.
@@ -9,7 +11,8 @@ import com.squareup.moshi.Json
  * @author Marek Osvald
  * @see ScryfallRuling
  */
+@Serializable
 data class ScryfallRulingList(
-    @Json(name = "has_more") private val hasMore: Boolean,
-    override val data: List<ScryfallRuling>
+    @JsonNames("has_more") private val hasMore: Boolean,
+    @JsonNames("data") override val data: List<ScryfallRuling>
 ) : ScryfallList<ScryfallRuling>
