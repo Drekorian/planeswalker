@@ -61,8 +61,8 @@ dependencies {
 
     implementation(libs.kotlin.stdlib)
     implementation(libs.coil)
+    implementation(libs.kotlinx.datetime)
     implementation(libs.material)
-    implementation(libs.threeTenAbp)
 
     // test dependencies
     testImplementation(libs.junit)

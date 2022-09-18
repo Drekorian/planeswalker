@@ -1,8 +1,8 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
-import cz.drekorian.android.planeswalker.scryfall.api.annotation.ScryfallDate
-import org.threeten.bp.LocalDate
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents a single MTG set.
@@ -23,22 +23,23 @@ import org.threeten.bp.LocalDate
  * otherwise
  * @property isNonFoilOnly true, provided that this set only contains non-foil cards, false
  * otherwise
- * @property isFoilOnly  true, provided that this set only contains foil cards, false otherwise
+ * @property isFoilOnly true, provided that this set only contains foil cards, false otherwise
  * @property iconSvgUri a URI for this set's icon
  */
+@Serializable
 data class ScryfallSet(
-    val id: String,
-    val code: String,
-    val name: String,
-    val uri: String,
-    @Json(name = "scryfall_uri") val scryfallUri: String,
-    @Json(name = "search_uri") val searchUri: String,
-    @ScryfallDate @Json(name = "released_at") val releasedAt: LocalDate,
-    @Json(name = "set_type") val setType: String,
-    @Json(name = "card_count") val cardCount: Int,
-    @Json(name = "digital") val isDigital: Boolean,
+    @JsonNames("id")val id: String,
+    @JsonNames("code") val code: String,
+    @JsonNames("name") val name: String,
+    @JsonNames("uri") val uri: String,
+    @JsonNames("scryfall_uri") val scryfallUri: String,
+    @JsonNames("search_uri") val searchUri: String,
+    @JsonNames("released_at") val releasedAt: LocalDate,
+    @JsonNames("set_type") val setType: String,
+    @JsonNames("card_count") val cardCount: Int,
+    @JsonNames("digital") val isDigital: Boolean,
     @Suppress("SpellCheckingInspection")
-    @Json(name = "nonfoil_only") val isNonFoilOnly: Boolean,
-    @Json(name = "foil_only") val isFoilOnly: Boolean,
-    @Json(name = "icon_svg_uri") val iconSvgUri: String
+    @JsonNames("nonfoil_only") val isNonFoilOnly: Boolean,
+    @JsonNames("foil_only") val isFoilOnly: Boolean,
+    @JsonNames("icon_svg_uri") val iconSvgUri: String
 )

@@ -16,8 +16,9 @@ import coil.size.Scale
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallSet
 import cz.drekorian.android.planeswalker.set.SetFragment
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.FormatStyle
+import kotlinx.datetime.toJavaLocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 /**
  * This adapter handles displaying [ScryfallSet] in a [RecyclerView].
@@ -55,8 +56,8 @@ class SetListAdapter(
                 )
             }
             holder.title.text = set.name
-            holder.releasedAt.text =
-                set.releasedAt.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
+            holder.releasedAt.text = set.releasedAt.toJavaLocalDate()
+                .format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
             holder.icon.load(
                 data = set.iconSvgUri,
                 imageLoader = imageLoader,

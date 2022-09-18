@@ -1,6 +1,7 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents Scryfall imagery object for a [ScryfallCard].
@@ -16,11 +17,12 @@ import com.squareup.moshi.Json
  * @see ScryfallCard
  * @author Marek Osvald
  */
+@Serializable
 data class ScryfallCardImagery(
     val png: String,
-    @Json(name = "border_crop") val borderCrop: String,
-    @Json(name = "art_crop") val artCrop: String,
-    val large: String,
-    val normal: String,
-    val small: String
+    @JsonNames("border_crop") val borderCrop: String,
+    @JsonNames("art_crop") val artCrop: String,
+    @JsonNames("large") val large: String,
+    @JsonNames("normal")val normal: String,
+    @JsonNames("small") val small: String
 )

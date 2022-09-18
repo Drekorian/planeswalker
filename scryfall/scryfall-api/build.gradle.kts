@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -26,6 +27,9 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
+        )
     }
 }
 
@@ -38,8 +42,8 @@ dependencies {
     api(libs.androidx.appcompat)
 
     api(libs.kotlin.stdlib)
-    api(libs.threeTenAbp)
-    implementation(libs.moshi)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.json)
 
     // testing dependencies
     testImplementation(libs.junit)

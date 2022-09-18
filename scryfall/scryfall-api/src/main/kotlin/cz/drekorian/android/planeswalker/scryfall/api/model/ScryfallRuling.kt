@@ -1,9 +1,8 @@
 package cz.drekorian.android.planeswalker.scryfall.api.model
 
-import com.squareup.moshi.Json
-import cz.drekorian.android.planeswalker.scryfall.api.annotation.ScryfallDate
-import cz.drekorian.android.planeswalker.scryfall.api.annotation.ScryfallSource
-import org.threeten.bp.LocalDate
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 /**
  * This data class represents a single [ScryfallCard] ruling.
@@ -17,8 +16,9 @@ import org.threeten.bp.LocalDate
  * @see ScryfallCard
  * @author Marek Osvald
  */
+@Serializable
 data class ScryfallRuling(
-    @ScryfallSource val source: String,
-    @Json(name = "published_at") @ScryfallDate val publishedAt: LocalDate,
-    val comment: String
+    @JsonNames("source") val source: String,
+    @JsonNames("published_at") val publishedAt: LocalDate,
+    @JsonNames("comment") val comment: String
 )
