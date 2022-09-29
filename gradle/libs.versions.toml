@@ -1,9 +1,9 @@
 [versions]
 
-androidGradlePlugin = "7.3.0-rc01"
+androidGradlePlugin = "7.3.0"
 buildTools = "33"
 compileSdk = "33"
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 minSdk = "23"
 targetSdk = "33"
 
