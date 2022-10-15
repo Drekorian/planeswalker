@@ -15,7 +15,7 @@ androidx-lifecycle-extensions = "2.2.0"
 androidx-navigation = "2.5.2"
 
 kotlinx-datetime = "0.4.0"
-kotlinx-serialization = "1.4.0"
+kotlinx-serialization = "1.4.1"
 
 coil = "2.2.2"
 koin = "3.2.2"
