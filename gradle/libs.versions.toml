@@ -1,6 +1,6 @@
 [versions]
 
-androidGradlePlugin = "7.3.0"
+androidGradlePlugin = "7.4.0-beta02"
 buildTools = "33"
 compileSdk = "33"
 kotlin = "1.7.20"

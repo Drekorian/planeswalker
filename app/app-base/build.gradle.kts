@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     kotlin("android")
     kotlin("kapt")
@@ -8,6 +10,7 @@ plugins {
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "cz.drekorian.android.planeswalker"
 
     buildFeatures {
         dataBinding = true
@@ -15,7 +18,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildTypes {
