@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -8,10 +10,10 @@ plugins {
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "cz.drekorian.android.planeswalker.scryfall.api"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildTypes {

@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -8,6 +10,7 @@ plugins {
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "cz.drekorian.android.planeswalker.vanilla"
 
     buildFeatures {
         dataBinding = true
