@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.Observer
 import coil.load
 import coil.size.Scale
@@ -18,7 +19,7 @@ import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentCardBinding
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallCard
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.stateViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
 /**
@@ -28,7 +29,7 @@ import java.util.Locale
  */
 class CardFragment : BaseToolbarFragment() {
 
-    private val viewModel: CardViewModel by stateViewModel()
+    private val viewModel: CardViewModel by viewModel()
 
     private lateinit var vImage: ImageView
 
@@ -49,7 +50,6 @@ class CardFragment : BaseToolbarFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.fetchCard(arguments?.getString(ARGUMENT_KEY_CARD_ID) ?: return)
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -64,6 +64,7 @@ class CardFragment : BaseToolbarFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupMenuProvider()
         viewModel.card.observe(viewLifecycleOwner, Observer { card: ScryfallCard? ->
             if (card == null) {
                 return@Observer
@@ -83,21 +84,28 @@ class CardFragment : BaseToolbarFragment() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_card, menu)
-    }
+    private fun setupMenuProvider() {
+        requireActivity().addMenuProvider(
+            object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.menu_card, menu)
+                }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId != R.id.scryfall) {
-            return false
-        }
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    if (menuItem.itemId != R.id.scryfall) {
+                        return false
+                    }
 
-        val intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse(viewModel.card.value?.scryfallUri ?: return false)
+                    val intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(viewModel.card.value?.scryfallUri ?: return false)
+                    )
+                    context?.startActivity(intent)
+                    return true
+                }
+            },
+            viewLifecycleOwner
         )
-        context?.startActivity(intent)
-        return true
     }
 
     companion object {

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentSettingsBinding
-import org.koin.androidx.viewmodel.ext.android.stateViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * This fragment displays the user settings.
@@ -19,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.stateViewModel
  */
 class SettingsFragment : BaseToolbarFragment() {
 
-    private val viewModel: SettingsViewModel by stateViewModel()
+    private val viewModel: SettingsViewModel by viewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_settings_title)

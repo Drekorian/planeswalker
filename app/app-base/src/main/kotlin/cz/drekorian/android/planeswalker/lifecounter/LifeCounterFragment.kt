@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentLifeCounterBinding
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
@@ -18,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
  */
 class LifeCounterFragment : BaseToolbarFragment() {
 
-    private val viewModel: LifeCounterViewModel by sharedViewModel()
+    private val viewModel: LifeCounterViewModel by activityViewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         getString(R.string.fragment_life_counter_title)
