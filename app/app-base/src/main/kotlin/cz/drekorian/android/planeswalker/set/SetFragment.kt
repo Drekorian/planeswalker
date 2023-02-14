@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import cz.drekorian.android.planeswalker.R
 import cz.drekorian.android.planeswalker.base.fragment.BaseToolbarFragment
 import cz.drekorian.android.planeswalker.databinding.FragmentSetBinding
-import org.koin.androidx.viewmodel.ext.android.stateViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * This fragment displays a cards of a set.
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.stateViewModel
  */
 class SetFragment : BaseToolbarFragment() {
 
-    private val viewModel: SetViewModel by stateViewModel()
+    private val viewModel: SetViewModel by viewModel()
 
     override val title: String by lazy(LazyThreadSafetyMode.NONE) {
         arguments?.getString(ARGUMENT_KEY_SET_NAME) ?: getString(R.string.fragment_set_title)

@@ -4,7 +4,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://kotlin.bintray.com/kotlinx/") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${libs.versions.androidGradlePlugin.get()}")
@@ -21,7 +20,12 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://kotlin.bintray.com/kotlinx/") }
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8.toString()
+        }
     }
 }
 
