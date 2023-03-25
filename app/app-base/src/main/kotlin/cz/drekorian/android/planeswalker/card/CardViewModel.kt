@@ -28,7 +28,7 @@ class CardViewModel(
 
     private lateinit var rulingsApiResponse: LiveData<ApiResponse<ScryfallRulingList>>
 
-    val card: LiveData<ScryfallCard> by lazy(LazyThreadSafetyMode.NONE) {
+    val card: LiveData<ScryfallCard?> by lazy(LazyThreadSafetyMode.NONE) {
         cardApiResponse.mapApiResponse { card ->
             // load rulings in response
             rulingsApiResponse = scryfallApi.getRulings(card.set, card.collectorNumber)

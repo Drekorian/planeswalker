@@ -24,7 +24,7 @@ class SetViewModel(
     /**
      * Stores [ScryfallCard]s in given set.
      */
-    val cards: LiveData<List<ScryfallCard>> by lazy(LazyThreadSafetyMode.NONE) {
+    val cards: LiveData<List<ScryfallCard>?> by lazy(LazyThreadSafetyMode.NONE) {
         cardsApiResponse.mapApiResponseList()
     }
 

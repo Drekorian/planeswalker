@@ -40,7 +40,8 @@ class MainFragment : BaseToolbarFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.randomCard.observe(viewLifecycleOwner) { card ->
-            vImage.load(card.primaryPng) {
+            val image = card?.primaryPng ?: return@observe
+            vImage.load(image) {
                 placeholder(R.drawable.card_back)
                 scale(Scale.FIT)
                 crossfade(true)

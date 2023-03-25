@@ -25,7 +25,7 @@ class MainViewModel(
     /**
      * Stores a retrieved random card.
      */
-    val randomCard: LiveData<ScryfallCard>
+    val randomCard: LiveData<ScryfallCard?>
         get() = randomCardApiResponse.mapApiResponse()
 
     /**

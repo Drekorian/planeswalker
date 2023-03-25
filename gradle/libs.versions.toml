@@ -1,6 +1,6 @@
 [versions]
 
-androidGradlePlugin = "8.0.0-beta04"
+androidGradlePlugin = "8.0.0-beta05"
 buildTools = "33"
 compileSdk = "33"
 kotlin = "1.8.10"
@@ -11,7 +11,6 @@ androidx-appcompat = "1.6.1"
 androidx-core-ctx = "1.9.0"
 androidx-constraintLayout = "2.1.4"
 androidx-fragment-ktx = "1.5.6"
-androidx-lifecycle-extensions = "2.2.0"
 androidx-navigation = "2.5.3"
 
 kotlinx-datetime = "0.4.0"
@@ -35,7 +34,6 @@ androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "a
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ctx"}
 androidx-constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintLayout"}
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment-ktx"}
-androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidx-lifecycle-extensions"}
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation"}
 androidx-navigation-safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx-navigation"}
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation"}

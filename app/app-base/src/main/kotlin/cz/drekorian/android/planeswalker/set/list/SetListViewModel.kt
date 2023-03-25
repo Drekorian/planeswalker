@@ -26,7 +26,7 @@ class SetListViewModel(
     /**
      * Stores set list.
      */
-    val sets: LiveData<List<ScryfallSet>> by lazy(LazyThreadSafetyMode.NONE) {
+    val sets: LiveData<List<ScryfallSet>?> by lazy(LazyThreadSafetyMode.NONE) {
         setsApiResponse.mapApiResponseList()
     }
 

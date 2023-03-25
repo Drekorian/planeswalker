@@ -6,7 +6,7 @@
 package cz.drekorian.android.planeswalker.util
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import cz.drekorian.android.planeswalker.scryfall.api.ApiResponse
 import cz.drekorian.android.planeswalker.scryfall.api.ApiSuccessResponse
 import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallList
@@ -17,13 +17,14 @@ import cz.drekorian.android.planeswalker.scryfall.api.model.ScryfallList
  * @receiver [LiveData] holding an [ApiResponse]
  * @return mapped [ApiResponse] data provided that the [ApiResponse] is successful, `null` otherwise
  */
-internal fun <T : Any> LiveData<ApiResponse<T>>.mapApiResponse(onSuccess: (T) -> Unit = { }): LiveData<T> =
-    Transformations.map(this) { apiResponse ->
-        when (apiResponse) {
-            is ApiSuccessResponse -> apiResponse.body.also { data -> onSuccess(data) }
-            else -> null
-        }
+internal fun <T : Any> LiveData<ApiResponse<T>>.mapApiResponse(
+    onSuccess: (T) -> Unit = { }
+): LiveData<T?> = map { apiResponse ->
+    when (apiResponse) {
+        is ApiSuccessResponse -> apiResponse.body.also { data -> onSuccess(data) }
+        else -> null
     }
+}
 
 /**
  * Maps [ApiResponse] [LiveData] into data [LiveData] instance.
@@ -33,14 +34,13 @@ internal fun <T : Any> LiveData<ApiResponse<T>>.mapApiResponse(onSuccess: (T) ->
  *
  */
 internal fun <X, T : ScryfallList<X>> LiveData<ApiResponse<T>>.mapApiResponseList(
-    onSuccess: (List<X>) -> Unit = {}
-): LiveData<List<X>> =
-    Transformations.map(this) { apiResponse ->
-        when (apiResponse) {
-            is ApiSuccessResponse -> apiResponse.body.data.also { data -> onSuccess(data) }
-            else -> null
-        }
+    onSuccess: (List<X>?) -> Unit = {}
+): LiveData<List<X>?> = map { apiResponse ->
+    when (apiResponse) {
+        is ApiSuccessResponse -> apiResponse.body.data.also { data -> onSuccess(data) }
+        else -> null
     }
+}
 
 /**
  * Maps [ApiResponse] into its body when possible.
