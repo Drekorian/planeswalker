@@ -1,6 +1,6 @@
 [versions]
 
-androidGradlePlugin = "8.1.0"
+androidGradlePlugin = "8.1.2"
 buildTools = "34"
 compileSdk = "34"
 kotlin = "1.9.20"
