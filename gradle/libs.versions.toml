@@ -3,7 +3,7 @@
 androidGradlePlugin = "8.1.2"
 buildTools = "34"
 compileSdk = "34"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 minSdk = "23"
 targetSdk = "34"
 
