@@ -7,7 +7,7 @@ kotlin = "2.0.0"
 minSdk = "23"
 targetSdk = "34"
 
-androidx-appcompat = "1.6.1"
+androidx-appcompat = "1.7.0"
 androidx-core-ctx = "1.13.1"
 androidx-constraintLayout = "2.1.4"
 androidx-fragment-ktx = "1.7.1"
