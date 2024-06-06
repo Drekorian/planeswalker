@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     kotlin("android")
     kotlin("kapt")
@@ -26,8 +24,9 @@ android {
             proguardFile("proguard-rules.pro")
         }
     }
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 

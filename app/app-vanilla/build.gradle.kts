@@ -32,6 +32,10 @@ android {
             proguardFile("proguard-rules.pro")
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
