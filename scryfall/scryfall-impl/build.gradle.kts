@@ -23,9 +23,10 @@ android {
     }
 
     kotlinOptions {
-       freeCompilerArgs = freeCompilerArgs + listOf(
-           "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
-       )
+        jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
+        )
     }
 
     dependencies {
