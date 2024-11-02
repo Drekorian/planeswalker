@@ -1,11 +1,11 @@
 [versions]
 
 agp = "8.7.1"
-buildTools = "34"
-compileSdk = "34"
+buildTools = "35.0.0"
+compileSdk = "35"
 kotlin = "2.0.21"
 minSdk = "23"
-targetSdk = "34"
+targetSdk = "35"
 
 androidx-appcompat = "1.7.0"
 androidx-core-ctx = "1.15.0"
