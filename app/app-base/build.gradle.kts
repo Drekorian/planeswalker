@@ -5,6 +5,10 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+kotlin {
+    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toInt())
+}
+
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -23,10 +27,6 @@ android {
             isMinifyEnabled = false
             proguardFile("proguard-rules.pro")
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 

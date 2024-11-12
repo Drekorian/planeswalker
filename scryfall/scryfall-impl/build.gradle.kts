@@ -7,6 +7,10 @@ plugins {
     kotlin("plugin.serialization")
 }
 
+kotlin {
+    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toInt())
+}
+
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -23,7 +27,6 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs + listOf(
             "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
         )

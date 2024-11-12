@@ -5,6 +5,10 @@ plugins {
     kotlin("android")
 }
 
+kotlin {
+    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toInt())
+}
+
 android {
     buildToolsVersion = libs.versions.buildTools.get()
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -18,10 +22,6 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
