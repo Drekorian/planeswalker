@@ -11,7 +11,7 @@ androidx-appcompat = "1.7.0"
 androidx-core-ctx = "1.15.0"
 androidx-constraintLayout = "2.2.0"
 androidx-fragment-ktx = "1.8.5"
-androidx-navigation = "2.8.4"
+androidx-navigation = "2.8.5"
 
 kotlinx-datetime = "0.6.1"
 kotlinx-serialization = "1.7.3"
