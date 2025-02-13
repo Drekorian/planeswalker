@@ -10,7 +10,7 @@ targetSdk = "35"
 androidx-appcompat = "1.7.0"
 androidx-core-ctx = "1.15.0"
 androidx-constraintLayout = "2.2.0"
-androidx-fragment-ktx = "1.8.5"
+androidx-fragment-ktx = "1.8.6"
 androidx-navigation = "2.8.6"
 
 kotlinx-datetime = "0.6.2"
