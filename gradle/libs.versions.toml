@@ -14,7 +14,7 @@ androidx-fragment-ktx = "1.8.6"
 androidx-navigation = "2.8.9"
 
 kotlinx-datetime = "0.6.2"
-kotlinx-serialization = "1.8.0"
+kotlinx-serialization = "1.8.1"
 
 coil = "2.7.0"
 koin = "4.0.4"
