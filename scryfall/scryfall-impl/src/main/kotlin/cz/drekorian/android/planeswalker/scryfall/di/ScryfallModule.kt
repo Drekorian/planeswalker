@@ -6,7 +6,7 @@ import cz.drekorian.android.planeswalker.scryfall.api.ScryfallApi
 import cz.drekorian.android.planeswalker.scryfall.internal.retrofit.LiveDataCallAdapterFactory
 import cz.drekorian.android.planeswalker.scryfall.internal.retrofit.ScryfallService
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.CallAdapter
@@ -33,7 +33,7 @@ val scryfallModule = module {
             .addCallAdapterFactory(get())
             .addConverterFactory(
                 json.asConverterFactory(
-                    MediaType.get("application/json")
+                    "application/json".toMediaType()
                 )
             )
             .build()
