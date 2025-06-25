@@ -13,7 +13,7 @@ androidx-constraintLayout = "2.2.1"
 androidx-fragment-ktx = "1.8.8"
 androidx-navigation = "2.9.0"
 
-kotlinx-datetime = "0.6.2"
+kotlinx-datetime = "0.7.0-0.6.x-compat"
 kotlinx-serialization = "1.8.1"
 
 coil = "2.7.0"
