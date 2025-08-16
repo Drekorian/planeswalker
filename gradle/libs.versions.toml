@@ -8,7 +8,7 @@ minSdk = "23"
 targetSdk = "35"
 
 androidx-appcompat = "1.7.1"
-androidx-core-ctx = "1.16.0"
+androidx-core-ctx = "1.17.0"
 androidx-constraintLayout = "2.2.1"
 androidx-fragment-ktx = "1.8.8"
 androidx-navigation = "2.9.3"
