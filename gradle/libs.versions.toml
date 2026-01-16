@@ -49,6 +49,6 @@ retrofit-kotlinx-serialization = { module = "com.jakewharton.retrofit:retrofit2-
 [plugins]
 
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-legacyKapt = { id = "com.android.legacy-kapt", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

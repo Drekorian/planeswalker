@@ -1,10 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
-    kotlin("plugin.serialization")
+    alias(libs.plugins.android.legacyKapt)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {

@@ -1,9 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.legacyKapt)
     id("androidx.navigation.safeargs.kotlin")
 }
 
