@@ -3,7 +3,7 @@
 agp = "9.0.0"
 buildTools = "36.0.0"
 compileSdk = "36"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 minSdk = "23"
 targetSdk = "36"
 
