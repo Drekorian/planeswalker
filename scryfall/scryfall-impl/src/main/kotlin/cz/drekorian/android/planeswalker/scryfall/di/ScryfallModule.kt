@@ -7,6 +7,8 @@ import cz.drekorian.android.planeswalker.scryfall.internal.retrofit.LiveDataCall
 import cz.drekorian.android.planeswalker.scryfall.internal.retrofit.ScryfallService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.CallAdapter
@@ -29,6 +31,20 @@ val scryfallModule = module {
 
     single {
         Retrofit.Builder()
+            .client(
+                OkHttpClient.Builder()
+                    .addInterceptor { chain ->
+                        chain.request().newBuilder()
+                            .header("Accept", "*/*")
+                            .header("User-Agent", "Planeswalker's Assistant Android App")
+                            .build()
+                            .let { request -> chain.proceed(request) }
+                        }
+                    .addInterceptor(
+                        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                    )
+                    .build()
+            )
             .baseUrl("https://api.scryfall.com")
             .addCallAdapterFactory(get())
             .addConverterFactory(
