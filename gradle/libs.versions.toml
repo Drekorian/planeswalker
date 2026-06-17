@@ -17,7 +17,7 @@ kotlinx-datetime = "0.8.0-0.6.x-compat"
 kotlinx-serialization = "1.11.0"
 
 coil = "2.7.0"
-koin = "4.2.1"
+koin = "4.2.2"
 material = "1.14.0"
 okhttp = "5.4.0"
 retrofit = "3.0.0"
