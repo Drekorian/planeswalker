@@ -30,21 +30,23 @@ val scryfallModule = module {
     single<ScryfallApi> { Scryfall }
 
     single {
-        Retrofit.Builder()
-            .client(
-                OkHttpClient.Builder()
-                    .addInterceptor { chain ->
-                        chain.request().newBuilder()
-                            .header("Accept", "*/*")
-                            .header("User-Agent", "Planeswalker's Assistant Android App")
-                            .build()
-                            .let { request -> chain.proceed(request) }
-                        }
-                    .addInterceptor(
-                        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-                    )
+        OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                chain.request().newBuilder()
+                    .header("Accept", "*/*")
+                    .header("User-Agent", "Planeswalker's Assistant Android App")
                     .build()
+                    .let { request -> chain.proceed(request) }
+            }
+            .addInterceptor(
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             )
+            .build()
+    }
+
+    single {
+        Retrofit.Builder()
+            .client(get())
             .baseUrl("https://api.scryfall.com")
             .addCallAdapterFactory(get())
             .addConverterFactory(
