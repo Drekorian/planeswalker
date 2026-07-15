@@ -1,6 +1,6 @@
 [versions]
 
-agp = "9.2.1"
+agp = "9.3.0"
 buildTools = "36.0.0"
 compileSdk = "37"
 kotlin = "2.4.0"
